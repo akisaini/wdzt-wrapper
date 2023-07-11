@@ -1,16 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { PyramidViewerComponent } from './pyramid-viewer.component';
+import { PyramidViewerComponent } from "./pyramid-viewer.component";
 
-describe('PyramidViewerComponent', () => {
+describe("PyramidViewerComponent", () => {
   let component: PyramidViewerComponent;
   let fixture: ComponentFixture<PyramidViewerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PyramidViewerComponent ]
-    })
-    .compileComponents();
+      declarations: [PyramidViewerComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('PyramidViewerComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

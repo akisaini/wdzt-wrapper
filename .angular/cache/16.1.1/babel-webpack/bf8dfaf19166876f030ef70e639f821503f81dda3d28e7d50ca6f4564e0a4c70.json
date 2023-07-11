@@ -1,0 +1,18 @@
+{
+  "ast": null,
+  "code": "export class Pyramid {\n  constructor() {\n    this.publiclyShared = true;\n  }\n}",
+  "map": {
+    "version": 3,
+    "names": ["Pyramid", "constructor", "publiclyShared"],
+    "sources": [
+      "/Users/akshat.saini/Documents/repo/wrap-app-main/src/app/pyramid.ts"
+    ],
+    "sourcesContent": [
+      "export class Pyramid {\n    // id: string | undefined; Is this correct?  \n    id: string | undefined;\n    name: string | undefined;\n    creationDate: Date | undefined;\n    job: string | undefined;\n    owner: string | undefined;\n    publiclyShared: boolean = true;\n    _links: any;\n  }\n  \n  export interface PaginatedPyramid {\n    page: any;\n    data: Pyramid[];\n    _links: any;\n  }\n  "
+    ],
+    "mappings": "AAAA,OAAM,MAAOA,OAAO;EAApBC,YAAA;IAOI,KAAAC,cAAc,GAAY,IAAI;EAEhC"
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

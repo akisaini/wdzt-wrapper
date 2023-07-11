@@ -1,0 +1,33 @@
+{
+  "ast": null,
+  "code": "import * as i0 from \"@angular/core\";\nimport * as i1 from \"./pyramid-viewer/pyramid-viewer.component\";\nclass AppComponent {\n  constructor() {\n    this.title = 'wrap-app';\n  }\n}\nAppComponent.ɵfac = function AppComponent_Factory(t) {\n  return new (t || AppComponent)();\n};\nAppComponent.ɵcmp = /*@__PURE__*/i0.ɵɵdefineComponent({\n  type: AppComponent,\n  selectors: [[\"app-root\"]],\n  decls: 1,\n  vars: 0,\n  template: function AppComponent_Template(rf, ctx) {\n    if (rf & 1) {\n      i0.ɵɵelement(0, \"app-pyramid-viewer\");\n    }\n  },\n  dependencies: [i1.PyramidViewerComponent],\n  styles: [\"/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsInNvdXJjZVJvb3QiOiIifQ== */\"]\n});\nexport { AppComponent };",
+  "map": {
+    "version": 3,
+    "names": [
+      "AppComponent",
+      "constructor",
+      "title",
+      "selectors",
+      "decls",
+      "vars",
+      "template",
+      "AppComponent_Template",
+      "rf",
+      "ctx",
+      "i0",
+      "ɵɵelement"
+    ],
+    "sources": [
+      "/Users/akshat.saini/Documents/repo/wrap-app-main/src/app/app.component.ts",
+      "/Users/akshat.saini/Documents/repo/wrap-app-main/src/app/app.component.html"
+    ],
+    "sourcesContent": [
+      "import { Component } from '@angular/core';\nimport { forkJoin, map } from 'rxjs';\nimport { Pyramid } from './pyramid';\n\n@Component({\n  selector: 'app-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.css']\n})\nexport class AppComponent {\n  title = 'wrap-app';\n  // manifest: any = null;         \n\n}\n",
+      "\n\n<app-pyramid-viewer></app-pyramid-viewer>"
+    ],
+    "mappings": ";;AAIA,MAKaA,YAAY;EALzBC,YAAA;IAME,KAAAC,KAAK,GAAG,UAAU;;;AADPF,YAAY,C;mBAAZA,YAAY;AAAA;AAAZA,YAAY,C;QAAZA,YAAY;EAAAG,SAAA;EAAAC,KAAA;EAAAC,IAAA;EAAAC,QAAA,WAAAC,sBAAAC,EAAA,EAAAC,GAAA;IAAA,IAAAD,EAAA;MCPzBE,EAAA,CAAAC,SAAA,yBAAyC;;;;;;SDO5BX,YAAY"
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

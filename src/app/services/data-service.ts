@@ -1,7 +1,5 @@
-
-import {Observable} from 'rxjs';
-import { PyramidService } from './pyramid.service';
-
+import { Observable } from "rxjs";
+import { PyramidService } from "./pyramid.service";
 
 export interface DataService<T, U> {
   getById(id: string): Observable<T>;
@@ -9,8 +7,4 @@ export interface DataService<T, U> {
   getByNameContainingIgnoreCase(params: any, name: string): Observable<U>;
 }
 
-export const dataMap = new Map<string, any>([
-  ['pyramid', PyramidService]
-]);
-
-
+export const dataMap = new Map<string, any>([["pyramid", PyramidService]]);
