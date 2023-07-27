@@ -1,6 +1,13 @@
+require('dotenv').config();
 const express = require("express");
-// const OpenSeadragon = require('openseadragon');
+const fs = require('fs');
+const path = require('path');
 const app = express();
+const archiver =  require('archiver');
+const mongoose = require("mongoose");
+const MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/";
+const { readdir } = require('fs').promises;
 
 // creating a test route
 app.get("/data", (req, res) => {
@@ -31,19 +38,13 @@ app.get("/data", (req, res) => {
 
 // zip the dzi files
 
-app.get("/pyramid", (req, res) => {
-  // Fetch the pyramid image data
-  const pyramidImageData = getPyramidsFolder(); // Replace with logic to retrieve the pyramid image data
 
-  // Set the response headers
-  res.set({
-    "Content-Type": "file/zip",
-    "Content-Disposition": 'attachment; filename="pyramid_image.zip"',
-  });
+// 1 content-type for zip file is correct - Done
+// 2 Look at how to zip a file with xpress - Done 
+// 3 create .env file which will have env variables - Done 
+// 4 define a pyramid object and store it in mongodb - Done 
+// 5 how to create an object type - Done 
 
-  // Send the pyramid image data as the response
-  res.send(pyramidImageData);
-});
 
 function exportDataAsParam(pyramidId) {
   // returns the path of the pyramid using the pyramidId
@@ -55,11 +56,94 @@ function exportDataAsParam(pyramidId) {
 }
 
 // todo: get local folders using express
+// how to access storage using express 
 function getPyramidsFolder() {
   return "/Users/akshat.saini/Documents/data/pyramids";
 }
 
-const port = 8000;
+
+// Shows the dirs
+  
+  const getFileList = async (dirName) => {
+      let files = [];
+      const items = await readdir(dirName, { withFileTypes: true });
+  
+      for (const item of items) {
+          if (item.isDirectory()) {
+              files = [
+                  ...files,
+                  ...(await getFileList(`${dirName}/${item.name}`)),
+              ];
+          } else {
+              files.push(`${dirName}/${item.name}`);
+          }
+      }
+  
+      return files;
+  };
+  
+  // getFileList('src').then((files) => {
+  //     console.log(files);
+  // });
+  
+
+  // zips the directory
+
+  app.get("/pyramid", (req, res) => {
+    // Fetch the pyramid image data
+    const pyramidImageData = getPyramidsFolder(); // Replace with logic to retrieve the pyramid image data
+    // Set the response headers
+    res.set({
+      "Content-Type": "application/zip",
+      "Content-Disposition": 'attachment; filename="pyramid_image.zip"',
+    });
+  
+    const zip  = archiver('zip')
+  
+    zip.pipe(res);
+  
+    // zip the stream
+    // currently zips file
+    // const filePath = '/Users/akshat.saini/Documents/data/pyramids/file.txt';
+    const filePath = getPyramidsFolder()+'/file.txt';
+    zip.file(filePath, { name: 'file.txt' });
+  
+    // Finalize the ZIP file and send the response
+    zip.finalize(); 
+    console.log(filePath)
+  });
+
+//------------returns extension in a dir-------------------------
+
+  function fromDir(startPath, filter, callback) {
+  
+      //console.log('Starting from dir '+startPath+'/');
+  
+      if (!fs.existsSync(startPath)) {
+          console.log("no dir ", startPath);
+          return;
+      }
+  
+      var files = fs.readdirSync(startPath);
+      for (var i = 0; i < files.length; i++) {
+          var filename = path.join(startPath, files[i]);
+          var stat = fs.lstatSync(filename);
+          if (stat.isDirectory()) {
+              fromDir(filename, filter, callback); //recurse
+          } else if (filter.test(filename)) callback(filename);
+      };
+  };
+  
+let pyrpath = getPyramidsFolder(); // gets folder loc from function 
+let pp = [];  // contains all .dzi files
+  fromDir(pyrpath, /\.dzi$/, function(filename) {
+      pp.push(filename);
+  }); 
+
+  console.log('-- Found: ', pp);
+
+
+const port = process.env.PORT_NUM;
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
