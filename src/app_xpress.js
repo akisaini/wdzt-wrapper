@@ -140,8 +140,30 @@ let pp = [];  // contains all .dzi files
       pp.push(filename);
   }); 
 
-  console.log('-- Found: ', pp);
+console.log('-- Found: ', pp);
 
+// -------------Passing the files in a zip stream------------------
+
+app.get('/zipFiles', (req, res) => {
+  // use pp - pp contains the loc of all the .dzi files
+
+  res.attachment('dzi_files.zip');
+  const zipStream = archiver('zip');
+
+  zipStream.on('error', function (err) {
+    res.status(500).send({ error: err.message });
+  });
+
+  zipStream.pipe(res);
+
+  pp.forEach((filePath) => {
+    const fileStream = fs.createReadStream(filePath);
+    const fileName = path.basename(filePath);
+    zipStream.append(fileStream, { name: fileName });
+  });
+
+  zipStream.finalize();
+});
 
 const port = process.env.PORT_NUM;
 app.listen(port, () => {
