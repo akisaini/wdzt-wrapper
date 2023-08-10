@@ -1,0 +1,7 @@
+{
+  "defaultOverriddenFields": [
+    "details.summary"
+  ],
+  "storageType": "json",
+  "assertionResultSummaryTemplates": {}
+}
