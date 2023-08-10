@@ -14,18 +14,6 @@ app.get("/data", (req, res) => {
   res.json(data);
 });
 
-// 1 content-type for zip file is correct - Done
-// 2 Look at how to zip a file with xpress - Done 
-// 3 create .env file which will have env variables
-      // Update, inject environment variables get pyr path from env file. 
-// 4 define a pyramid object and store it in mongodb - Done 
-      // Use CRUD operations for mongoose - a
-          // Use repositories with expressjs - b 
-      // separate  logic into diff files/folders - c 
-// 5 how to create an object type - Done 
-// 6 how to use external parameters in a get or post request for expressjs 
-      // look at WIPP-backend @request params (Line 147-PyramidFetchingController.java)
-      // create a rectangle from the x,y,width,heigth passed as params to get the final region
 
 function exportDataAsParam(pyramidId) {
   // returns the path of the pyramid using the pyramidId
