@@ -55,6 +55,7 @@ node_modules/
 # Miscellaneous
 packages/.angular
 .gitattributes
+packages/api/node_modules
 
 # Workspaces
 packages/*/node_modules
