@@ -3,11 +3,11 @@
 The project uses express and MongoDB for the backend. 
 The quickest way to get started with express is to utilize the executable express(1) to generate an application as shown below:
 
-Install dependencies:
-'''npm install'''
+## Install dependencies
+```npm install```
 
-Start the server:
-'''npm start'''
+## Start the server
+```npm start```
 
 View the website at: http://localhost:3000
 
