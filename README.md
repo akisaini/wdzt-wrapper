@@ -1,10 +1,7 @@
-# WrapApp
+# WDZT-Wrapper
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.5.
-
-# Information
-
-This project aims to create an Angular wrapper around the WDZT package and add/remove certain fuctionality such as the legacy menus and modularize the package so that itcan be used across various applications. 
+This project aims to create a wrapper around the WDZT package and modularize the package.
+The project contains two separate applications: UI and API. 
 
 # GitHub Link
 

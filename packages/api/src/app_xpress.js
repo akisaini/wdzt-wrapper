@@ -1,4 +1,4 @@
-require('dotenv').config();
+//require('dotenv').config(); // add env variables
 const express = require("express");
 const fs = require('fs');
 const path = require('path');
@@ -125,7 +125,7 @@ app.get('/zipFiles', (req, res) => {
 });
 
 
-const port = process.env.PORT_NUM;
+const port = 3000;
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
